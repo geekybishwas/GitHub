@@ -55,7 +55,7 @@ For checking your email, type below command
 ```bash 
 git config ---gloabal user.email
 ```
-
+![App Screenshot](https://github.com/geekybishwas/GitHub/blob/main/email_name.png?raw=true)
 ## Initializing Git Repository
 Certainly! The ```git init``` command is used to initialize a new Git repository in your current working directory.
 
@@ -64,11 +64,13 @@ Open your terminal and type below command to initialize a git repository
 ```bash 
 git init 
 ```
+![App Screenshot](https://github.com/geekybishwas/GitHub/blob/main/git_init.png?raw=true)
 To check if you are inside a git repository or not, type below command
 ```bash 
 ls -la
 ```
 If any ```.git``` file appears after entering ```ls -la```, the initialization of the git repository was successful, and this action will show any hidden files present in the repository.
+![App Screenshot](https://github.com/geekybishwas/GitHub/blob/main/check_init.png?raw=true)
 
 ## git status
 The```git status``` command displays the state of the working directory and the staging area.
@@ -145,3 +147,5 @@ For deleting current git repository.
 rm -rf.git
 ```
 The above command will delete the initialized git repository.
+![App Screenshot](https://github.com/geekybishwas/GitHub/blob/main/rm-rf.png?raw=true)
+
