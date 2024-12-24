@@ -196,6 +196,7 @@ Host github.com-work
 ```
 ### Step 4: Update Remote URLs to Use Aliases (for SSH)
 Now that you've configured the SSH aliases, you'll need to update the remote URLs in your repositories to use these aliases.
+
 1.For your personal repository, change the remote URL:
 ```bash
 git remote set-url origin git@github.com:your-username/repository.git
