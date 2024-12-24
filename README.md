@@ -149,3 +149,62 @@ rm -rf.git
 The above command will delete the initialized git repository.
 ![App Screenshot](https://github.com/geekybishwas/GitHub/blob/main/rm-rf.png?raw=true)
 
+## For Multiple GitHub Account
+To use two Git accounts (one for personal and one for work) on the same computer, you can configure Git to differentiate between the two accounts based on the repository. You'll do this by setting global and local configurations
+
+### Step 1: Set Global Git Configuration (Default Account)
+Set the global Git configuration for your personal account. This will be the default for all repositories unless overridden.
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+```
+
+### Step 2: Set Local Git Configuration for Work Repository
+For your work account, you will configure a local Git configuration on the specific repository. This allows you to use your work email and name for commits in that repository.
+```bash
+git config user.name "Your Work Name"
+git config user.email "your.work.email@example.com"
+```
+This will override the global settings for this repository only.
+
+### Step 3: Set SSH Configurations (if using SSH for authentication)
+If you are using SSH to authenticate with GitHub or GitLab (which is common), you'll need to set up separate SSH keys for each account.
+#### Generate SSH Keys for Both Accounts
+#### 1.Personal Account SSH Key
+```bash
+ssh-keygen -t rsa -b 4096 -C "your.email@example.com" -f ~/.ssh/id_rsa_personal
+```
+##### 2.Work Account SSH Key:
+```bash
+ssh-keygen -t rsa -b 4096 -C "your.work.email@example.com" -f ~/.ssh/id_rsa_work
+```
+
+### Configure SSH to Use the Correct Key for Each Account
+Edit the SSH config file (~/.ssh/config) to specify which key to use for each account.
+```bash
+# Personal Account
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_personal
+
+# Work Account
+Host github.com-work
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_rsa_work
+```
+### Step 4: Update Remote URLs to Use Aliases (for SSH)
+Now that you've configured the SSH aliases, you'll need to update the remote URLs in your repositories to use these aliases.
+1.For your personal repository, change the remote URL:
+```bash
+git remote set-url origin git@github.com:your-username/repository.git
+```
+2. For your work repository, change the remote URL
+```bash
+git remote set-url origin git@github.com-work:your-work-username/repository.git
+```
+This way, Git will use the correct SSH key based on the repository you are working on.
+
+
+
